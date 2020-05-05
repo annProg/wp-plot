@@ -75,6 +75,7 @@ class WordpressPlot {
 
 function plotRender($atts, $content=null) {
 	$plot = new WordpressPlot($atts);
+	$content=preg_replace('/<br \/>/','',$content);
 	$layout = $plot->render($content);
 	return $layout;
 }
