@@ -15,13 +15,13 @@ class WordpressPlot {
 
 	function __construct($attr) {
 		$default = array(
-						'cht' => 'gv:dot',
-						'align' => 'center',
-						'chof' => 'png',
-						'width' => '',
-						'height' => '',
-						'caption' => 'Wordpress Text to Chart',
-					);
+			'cht' => 'gv:dot',
+			'align' => 'center',
+			'chof' => 'png',
+			'width' => '',
+			'height' => '',
+			'caption' => 'Wordpress Text to Chart',
+		);
 		$this->attr = array_merge($default, $attr);
 	}
 
