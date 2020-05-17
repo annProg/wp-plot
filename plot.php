@@ -75,7 +75,7 @@ class WordpressPlot {
 
 function plotRender($atts, $content=null) {
 	$plot = new WordpressPlot($atts);
-	$content=preg_replace('/<br \/>/','',$content);
+	$content=preg_replace('/<br\s?\/>/','',$content);
 	$content=preg_replace('/&#822(0|1);/','"',$content);
 	$content=preg_replace('/&#8243;/','"',$content);
 	$content=preg_replace('/&#8212;/','--',$content);
