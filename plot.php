@@ -74,6 +74,9 @@ class WordpressPlot {
 
 
 function plotRender($atts, $content=null) {
+	if ($atts == "") {
+		$atts = ['chof' => 'png'];
+	}
 	$plot = new WordpressPlot($atts);
 	$content=preg_replace('/<br\s?\/>/','',$content);
 	$content=preg_replace('/&#822(0|1);/','"',$content);
