@@ -90,5 +90,8 @@ function wpPlotScript() {
 	wp_enqueue_script( 'loadplot', "/wp-content/plugins/wp-plot/loadplot.js", ['jquery'], '1.0', true );
 }
 
+// https://wordpress.stackexchange.com/questions/257253/problem-in-wordpress-with dash like `-` `--`
+add_filter( 'run_wptexturize', '__return_false' );
+
 add_action( 'wp_enqueue_scripts', 'wpPlotScript' );
 add_shortcode('plot','plotRender');
