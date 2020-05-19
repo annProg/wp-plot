@@ -28,6 +28,8 @@ class WordpressPlot {
 	function cal_file_name($content) {
 		$path = rtrim($this->cdn,"/") . "/" . "cache/images/";
 		$flag = str_replace(":", "_", $this->attr['cht']);
+		$content=preg_replace('/&lt;/','<',$content);
+		$content=preg_replace('/&gt;/','>',$content);
 		return $path . md5(str_replace("\n", "\r\n", $content)) . "-" . $flag . "-" . $this->attr['width'] . "x" . $this->attr['height'] . "." . $this->attr['chof'];
 	}
 
@@ -79,8 +81,6 @@ function plotRender($atts, $content=null) {
 	}
 	$plot = new WordpressPlot($atts);
 	$content=preg_replace('/<br\s?\/>/','',$content);
-	$content=preg_replace('/&lt;/','<',$content);
-	$content=preg_replace('/&gt;/','>',$content);
 	$content=preg_replace('/<\/p>\n<p>/',"\n\n",$content);
 	$content=preg_replace('/&#822(0|1);/','"',$content);
 	$content=preg_replace('/&#8243;/','"',$content);
