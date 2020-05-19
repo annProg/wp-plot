@@ -137,7 +137,7 @@
 			plot += ' align="' + props.attributes.align + '"';
 			if ( props.attributes.width != '') plot += ' width=' + props.attributes.width;
 			if ( props.attributes.height != '') plot += ' height=' + props.attributes.height;
-			plot += "\"]\n";
+			plot += "]\n";
 			plot += o;
 			plot += '[/plot]';
 

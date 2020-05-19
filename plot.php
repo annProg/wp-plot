@@ -32,7 +32,11 @@ class WordpressPlot {
 		$content=preg_replace('/&gt;/','>',$content);
 		// 删除开头换行符，否则文件名计算会不正确
 		$content = ltrim($content);
-		return $path . md5(str_replace("\n", "\r\n", $content)) . "-" . $flag . "-" . $this->attr['width'] . "x" . $this->attr['height'] . "." . $this->attr['chof'];
+
+		// 暂时没有实现调用接口时带 size 信息，因此这里 size 暂时留空
+		$w = "";
+		$h = "";
+		return $path . md5(str_replace("\n", "\r\n", $content)) . "-" . $flag . "-" . $w . "x" . $h . "." . $this->attr['chof'];
 	}
 
 	/**
