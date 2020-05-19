@@ -79,6 +79,8 @@ function plotRender($atts, $content=null) {
 	}
 	$plot = new WordpressPlot($atts);
 	$content=preg_replace('/<br\s?\/>/','',$content);
+	$content=preg_replace('/&lt;/','<',$content);
+	$content=preg_replace('/&gt;/','>',$content);
 	$content=preg_replace('/<\/p>\n<p>/',"\n\n",$content);
 	$content=preg_replace('/&#822(0|1);/','"',$content);
 	$content=preg_replace('/&#8243;/','"',$content);
@@ -90,6 +92,26 @@ function plotRender($atts, $content=null) {
 function wpPlotScript() {
 	wp_enqueue_script( 'loadplot', "/wp-content/plugins/wp-plot/loadplot.js", ['jquery'], '1.0', true );
 }
+
+function wp_plot_register_block() {
+ 
+    // automatically load dependencies and version
+    //$asset_file = include( plugin_dir_path( __FILE__ ) . 'build/index.asset.php');
+ 
+    wp_register_script(
+        'wp-plot',
+		plugins_url( 'block.js', __FILE__ ),
+		array('wp-blocks', 'wp-element', 'wp-editor', 'wp-i18n'),
+		'1.0.0'
+	);
+ 
+    register_block_type( 'wp-plot/chart', array(
+        'editor_script' => 'wp-plot',
+    ) );
+ 
+}
+
+add_action( 'init', 'wp_plot_register_block' );
 
 // https://wordpress.stackexchange.com/questions/257253/problem-in-wordpress-with dash like `-` `--`
 add_filter( 'run_wptexturize', '__return_false' );
