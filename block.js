@@ -4,7 +4,9 @@
 	var el = element.createElement; //用于输出HTML
 	var RichText = editor.RichText; //用于获取文本输入块
 
-	var TextareaControl = wp.components.TextareaControl;
+	const {__} = wp.i18n; //translation functions
+	const {InspectorControls} = wp.editor; //Block inspector wrapper
+	const {TextControl,SelectControl,TextareaControl} = wp.components; //WordPress form inputs
 
 	blocks.registerBlockType('wp-plot/chart', {
 		title: 'Text2Chart', //标题
@@ -135,7 +137,7 @@
 			plot += ' align="' + props.attributes.align + '"';
 			if ( props.attributes.width != '') plot += ' width=' + props.attributes.width;
 			if ( props.attributes.height != '') plot += ' height=' + props.attributes.height;
-			plot += '"]';
+			plot += "\"]\n";
 			plot += o;
 			plot += '[/plot]';
 

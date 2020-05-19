@@ -30,6 +30,8 @@ class WordpressPlot {
 		$flag = str_replace(":", "_", $this->attr['cht']);
 		$content=preg_replace('/&lt;/','<',$content);
 		$content=preg_replace('/&gt;/','>',$content);
+		// 删除开头换行符，否则文件名计算会不正确
+		$content = ltrim($content);
 		return $path . md5(str_replace("\n", "\r\n", $content)) . "-" . $flag . "-" . $this->attr['width'] . "x" . $this->attr['height'] . "." . $this->attr['chof'];
 	}
 
