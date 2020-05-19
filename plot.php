@@ -108,7 +108,7 @@ function wp_plot_register_block() {
         'wp-plot',
 		plugins_url( 'block.js', __FILE__ ),
 		array('wp-blocks', 'wp-element', 'wp-editor', 'wp-i18n'),
-		'1.0.0'
+		'1.0.2'
 	);
  
     register_block_type( 'wp-plot/chart', array(
